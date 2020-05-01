@@ -2,7 +2,8 @@ import React from 'react';
 import {
     View,
     StyleSheet,
-    Text
+    Text,
+    Platform
 } from 'react-native';
 import Colors from '../../shared/styles/colors';
 const Header = ({ title }) => {
@@ -18,11 +19,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 90,
         paddingTop: 36,
-        backgroundColor: Colors.primary,
-        alignItems: 'center'
+        backgroundColor: Platform.OS === 'android' ? Colors.primary : 'white',
+        alignItems: 'center',
+        borderBottomColor: Platform.OS === 'ios' ? '#ccc' : 'transparent',
+        borderBottomWidth: Platform.OS === 'ios' ? 1 : 0
     },
     headerTitle: {
-        color: 'black',
+        color: Platform.OS === 'ios' ? Colors.danger : 'white',
         fontSize: 18,
         fontFamily: 'open-sans-bold'
     }

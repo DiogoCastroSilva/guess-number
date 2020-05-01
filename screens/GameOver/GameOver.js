@@ -11,11 +11,31 @@ const GameOver = ({
     userNumber,
     startNewGame
 }) => {
+    const [availableDeviceWidth, setAvailableDeviceWidth] = useState(Dimensions.get('window').width);
+    const [availableDeviceHeight, setAvailableDeviceHeight] = useState(Dimensions.get('window').height);
+
+    const updateLayout = () => {
+        setAvailableDeviceWidth(Dimensions.get('window').width);
+        setAvailableDeviceHeight(Dimensions.get('window').height);
+    };
+
+    useEffect(() => {
+        Dimensions.addEventListener('change', updateLayout);
+ 
+        return () => {
+            Dimensions.removeEventListener('change', updateLayout);
+        };
+    });
+
     return (
         <ScrollView>
             <View style={styles.screen}>
                 <Text style={DefaultStyle.title}>This is Game Over!</Text>
-                <View style={styles.imageContainer}>
+                <View style={{ ...styles.imageContainer,
+                    width: availableDeviceWidth * 0.7,
+                    height: availableDeviceWidth * 0.7,
+                    borderRadius: availableDeviceWidth * 0.7 / 2,
+                    marginVertical: Dimensions.get('window').height / 30}}>
                     {/* Local Image */}
                     <Image
                         source={require('../../assets/images/success.png')}
@@ -30,8 +50,14 @@ const GameOver = ({
                         resizeMode='cover'
                     /> */}
                 </View>
-                <View style={styles.resultContainer}>
-                    <Text style={DefaultStyle.bodyText, styles.resultText}>
+                <View style={{...styles.resultContainer,
+                    marginVertical: availableDeviceHeight / 60,
+                    marginBottom: availableDeviceHeight < 400 ? 10 : 30}}>
+                    <Text style={{
+                        ...DefaultStyle.bodyText,
+                        ...styles.resultText,
+                        fontSize: availableDeviceHeight < 400 ? 60 : 20
+                    }}>
                         Your phone nedeed <Text style={styles.highlight}>{numberOfRounds} </Text>
                         to guess the number <Text style={styles.highlight}>{userNumber}</Text>
                     </Text>
@@ -52,13 +78,9 @@ const styles = StyleSheet.create({
         paddingVertical: 20
     },
     imageContainer: {
-        width: Dimensions.get('window').width * 0.7,
-        height: Dimensions.get('window').width * 0.7,
-        borderRadius: Dimensions.get('window').width * 0.7 / 2,
         borderWidth: 3,
         borderColor: 'black',
-        overflow: 'hidden',
-        marginVertical: Dimensions.get('window').height / 20
+        overflow: 'hidden'
     },
     // Mandatory for Web images
     image: {
@@ -66,13 +88,10 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     resultContainer: {
-        marginHorizontal: 30,
-        marginVertical: Dimensions.get('window').height / 60,
-        marginBottom: Dimensions.get('window').height < 400 ? 10 : 30
+        marginHorizontal: 30
     },
     resultText: {
-        textAlign: 'center',
-        fontSize: Dimensions.get('window').height < 400 ? 60 : 20 
+        textAlign: 'center'
     },
     highlight: {
         color: Colors.primary,
