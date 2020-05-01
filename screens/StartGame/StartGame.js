@@ -3,7 +3,8 @@ import {
     View,
     StyleSheet,
     TextInput,
-    Button
+    Button,
+    Text
 } from 'react-native';
 
 const StartGame = () => {

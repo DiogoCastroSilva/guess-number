@@ -1,5 +1,9 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {
+    View,
+    StyleSheet,
+    Text
+} from 'react-native';
 
 const Header = ({ title }) => {
     return (
