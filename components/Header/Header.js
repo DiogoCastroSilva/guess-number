@@ -8,7 +8,7 @@ import {
 import Colors from '../../shared/styles/colors';
 const Header = ({ title }) => {
     return (
-        <View style={styles.header}>
+        <View style={{...styles.header, ...Platform.select({ios: styles.headerIOS, android: styles.headerAndroid}) }}>
             <Text style={styles.headerTitle}>{title}</Text>
         </View>
     );
@@ -19,10 +19,15 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 90,
         paddingTop: 36,
-        backgroundColor: Platform.OS === 'android' ? Colors.primary : 'white',
-        alignItems: 'center',
-        borderBottomColor: Platform.OS === 'ios' ? '#ccc' : 'transparent',
-        borderBottomWidth: Platform.OS === 'ios' ? 1 : 0
+        alignItems: 'center'
+    },
+    headerIOS: {
+        borderBottomColor: '#ccc',
+        borderBottomWidth:1,
+        backgroundColor: 'white'
+    },
+    headerAndroid: {
+        backgroundColor: Colors.primary
     },
     headerTitle: {
         color: Platform.OS === 'ios' ? Colors.danger : 'white',
