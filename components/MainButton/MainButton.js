@@ -5,6 +5,14 @@ import {
     Text,
     TouchableOpacity,
     TouchableNativeFeedback,
+    /**
+     * Can also be used by creating diferent files for the specific platform like:
+     * MainButton.android.js
+     * MainButton.ios.js
+     * 
+     * The import would be the same
+     * import MainButton from '../components/MainButton/MainButton';
+     */
     Platform
 } from 'react-native';
 
