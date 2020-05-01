@@ -9,10 +9,15 @@ import {
     Alert
 } from 'react-native';
 
-import Card from '../../components/Card/Card';
+// Shared
 import Colors from '../../shared/styles/colors';
+import DefaultStyle from '../../shared/styles/default';
+
+// Components
+import Card from '../../components/Card/Card';
 import Input from '../../components/Input/Input';
 import NumberContainer from '../../components/NumberContainer/NumberContainer';
+import TitleText from '../../components/TitleText/TitleText';
 
 const StartGame = ({ onStartGame }) => {
     const [numberEntered, setNumberEntered] = useState('');
@@ -69,9 +74,9 @@ const StartGame = ({ onStartGame }) => {
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.screen}>
-                <Text style={styles.title}>Start a new Game</Text>
+                <TitleText style={styles.title}>Start a new Game</TitleText>
                 <Card style={styles.inputContainer}>
-                    <Text>Select a Number</Text>
+                    <Text style={DefaultStyle.bodyText}>Select a Number</Text>
                     <Input
                         blurOnSubmit style={styles.input}
                         autoCapitalize='none'
@@ -112,7 +117,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        marginVertical: 10
+        marginVertical: 10,
+        fontFamily: 'open-sans-bold'
     },
     inputContainer: {
         width: 300,

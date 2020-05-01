@@ -1,5 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, StyleSheet, Text, Button, Alert } from 'react-native';
+
+// Shared
+import DefaultStyle from '../../shared/styles/default';
+
+// Components
 import NumberContainer from '../../components/NumberContainer/NumberContainer';
 import Card from '../../components/Card/Card';
 
@@ -57,7 +62,7 @@ const Game = ({ userNumber, onGameOver }) => {
 
     return (
         <View style={styles.screen}>
-            <Text>Opponent's Guess</Text>
+            <Text style={DefaultStyle.title}>Opponent's Guess</Text>
             <NumberContainer>{currentGuess}</NumberContainer>
             <Card style={styles.btnContainer}>
                 <Button

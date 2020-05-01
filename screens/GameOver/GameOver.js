@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
+
+// Shared
 import Colors from '../../shared/styles/colors';
+import DefaultStyle from '../../shared/styles/default';
 
 const GameOver = ({
     numberOfRounds,
@@ -9,9 +12,9 @@ const GameOver = ({
 }) => {
     return (
         <View style={styles.screen}>
-            <Text>This is Game Over!</Text>
-            <Text>Number of Rounds: {numberOfRounds}</Text>
-            <Text>The number was {userNumber}</Text>
+            <Text style={DefaultStyle.title}>This is Game Over!</Text>
+            <Text style={DefaultStyle.bodyText}>Number of Rounds: {numberOfRounds}</Text>
+            <Text style={DefaultStyle.bodyText}>The number was {userNumber}</Text>
             <Button
                 title='New Game'
                 onPress={startNewGame}
