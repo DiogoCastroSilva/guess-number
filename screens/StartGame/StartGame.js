@@ -6,7 +6,9 @@ import {
     Button,
     Text
 } from 'react-native';
+
 import Card from '../../components/Card/Card';
+import Colors from '../../shared/styles/colors';
 
 const StartGame = () => {
     return (
@@ -16,8 +18,12 @@ const StartGame = () => {
                 <Text>Select a Number</Text>
                 <TextInput />
                 <View style={styles.buttonContainer}>
-                    <Button title="Reset" onPress={() => {}} />
-                    <Button title="Confirm" onPress={() => {}} />
+                    <View style={styles.btn}>
+                        <Button title="Reset" onPress={() => {}} color={Colors.danger} />
+                    </View>
+                    <View style={styles.btn}>
+                        <Button title="Confirm" onPress={() => {}} colort={Colors.primary} />
+                    </View>
                 </View>
             </Card>
         </View>
@@ -44,6 +50,9 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
         paddingHorizontal: 15
+    },
+    btn: {
+        width: 120
     }
 });
 
