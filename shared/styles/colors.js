@@ -1,4 +1,4 @@
 export default {
     primary: "#f7287b",
-    danger: "#c7171C"
+    danger: "#c717fc"
 };
